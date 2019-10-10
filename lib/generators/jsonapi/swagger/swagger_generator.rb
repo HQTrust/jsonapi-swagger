@@ -98,7 +98,7 @@ module Jsonapi
     end
 
     def sortable_fields
-      resource_klass.sortable_fields
+      resource_klass.sortable_fields({})
     end
 
     def creatable_fields
