@@ -82,8 +82,7 @@ module Jsonapi
     end
 
     def model_klass
-      puts file_name
-      file_name.camelize.safe_constantize
+      resource_klass._model_name.safe_constantize
     end
 
     def resource_klass
@@ -121,7 +120,7 @@ module Jsonapi
     def columns_with_comment(need_encoding: true)
       @columns_with_comment ||= {}.tap do |clos|
         model_klass.columns.each do |col|
-          clos[col.name.to_sym] = { type: swagger_type(col), items_type: col.type, is_array: col.array,  nullable: col.null, comment: col.comment }
+          clos[col.name.to_sym] = { type: swagger_type(col), items_type: col.type, is_array: col.array, nullable: col.null, comment: col.comment }
           clos[col.name.to_sym][:comment] = safe_encode(col.comment) if need_encoding
         end
       end
