@@ -77,6 +77,7 @@
       Hash.new{|h, k| h[k] = {}} .tap do |props|
         attrs.each do |attr|
          columns = columns_with_comment(need_encoding: false)
+          puts 'TEST!!'
           props[attr][:type] = columns[attr][:type]
           props[attr][:items] = { type: columns[attr][:items_type] } if columns[attr][:is_array]
           props[attr][:'x-nullable'] = columns[attr][:nullable]
