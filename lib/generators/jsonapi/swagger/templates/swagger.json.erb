@@ -98,7 +98,7 @@
               links: {
                 type: :object,
                 properties: {
-                  self: { type: :string, description:  tt(:associate_list_link, model: relation_name_camelize) },
+                  self: { type: :string, description: tt(:associate_list_link, model: relation_name_camelize) },
                   related: { type: :string, description: tt(:related_link, model: relation_name_camelize) },
                 },
                 description: tt(:related_link, model: relation_name_camelize)
@@ -122,7 +122,7 @@
                 items: {
                   type: :object,
                   properties: {
-                    type: { type: :string, default: relation.table_name },
+                    type: { type: :string, default: table_name(relation) },
                     id: { type: :string, description: "#{relation_name_camelize} ID" },
                   },
                 },
@@ -135,7 +135,7 @@
             relat_props[relation_name][:properties][:data] = {
               type: :object,
               properties: {
-                type: { type: :string, default: relation.table_name },
+                type: { type: :string, default: table_name(relation) },
                 id: { type: :string, description: "#{relation_name_camelize} ID" },
               },
               description: tt(:related_id, model: relation_name_camelize)
@@ -143,6 +143,12 @@
           end
         end
       end
+    end
+
+    def table_name(relation)
+      relation.table_name
+    rescue
+      relation
     end
 
     def list_resource_responses
