@@ -82,8 +82,8 @@ module Jsonapi
     end
 
     def model_klass
-      puts "model_klass: #{resource_klass}"
-      resource_klass._model_name.safe_constantize
+      binding.pry
+      resource_klass.model_name.safe_constantize
     end
 
     def resource_klass
