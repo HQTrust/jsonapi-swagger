@@ -82,6 +82,7 @@ module Jsonapi
     end
 
     def model_klass
+      puts file_name
       file_name.camelize.safe_constantize
     end
 
