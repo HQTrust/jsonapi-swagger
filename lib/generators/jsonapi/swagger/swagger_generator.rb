@@ -65,8 +65,8 @@ module Jsonapi
       model_class_name.pluralize
     end
 
-    def route_resouces
-      resouces_name.tableize
+    def route_resources
+      resouces_name.tableize.dasherize
     end
 
     def model_class_name
