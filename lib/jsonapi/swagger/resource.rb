@@ -2,7 +2,7 @@ require 'forwardable'
 module Jsonapi
   module Swagger
     class Resource
-      def _model_name
+      def self._model_name
         puts "_model_name: #{@model_class_name}"
         @model_class_name
       end
