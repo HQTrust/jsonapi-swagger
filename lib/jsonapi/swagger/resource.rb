@@ -2,7 +2,13 @@ require 'forwardable'
 module Jsonapi
   module Swagger
     class Resource
+      def _model_name
+        puts "_model_name: #{@model_class_name}"
+        @model_class_name
+      end
+
       def self.with(model_class_name)
+        @model_class_name = model_class_name
         if Object.const_defined?("#{model_class_name}Resource")
           @resource_class = "#{model_class_name}Resource".safe_constantize
           unless @resource_class < JSONAPI::Resource
